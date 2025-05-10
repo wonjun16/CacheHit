@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <vector>
 
 struct CacheData
 {
@@ -13,16 +14,15 @@ class L1
 public:
 	L1();
 	~L1();
-	bool CacheHit(void*, const int) const;
+	bool CacheHit(void*, const int);
 
 private:
-	std::list<CacheData*>* Cache;
+	std::vector<std::list<CacheData*>> Cache;
 	int Way;
 	int TotalIndex;
 	int CacheLineSize;
 
-	void Insert(void*, int);
-	void Change(void*, int);
-	void Delete(void*, int);
+	void Insert(const int, const int);
+	void Change(const int, const int);
 };
 
